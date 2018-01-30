@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  client:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./public:/usr/src/app/public
+      - ./src:/usr/src/app/src
+      - ./package.json:/usr/src/app/package.json
+    environment:
+      NODE_ENV: "production"
+    ports:
+      - "3000:3000"
+    command: npm run start:development
